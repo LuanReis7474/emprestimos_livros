@@ -1,5 +1,7 @@
 # front_projeto_desafio
 
+#feito usando a framework Vue.js
+
 ## Project setup
 ```
 npm install
