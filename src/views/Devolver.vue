@@ -1,78 +1,90 @@
 <template>
-    <div id="cadastro">
-        <br>
-        <h1>Devolver livro</h1>
-        <br>
-        <br>
-        <br>
-        <h2>Id do livro que deseja devolver:</h2>
-        <input id="book" class="input" type="text">
-        <br>
-        <br>
-        <br>
-        <button v-on:click="returnedBook()">Devolver</button>
-        <p v-on:click="back()" style="font-size:30px;position:relative;top:10%;left:-40%;cursor:pointer">&#10229;</p>
+    <div id="loan">
+        <div class="header-loan">
+            <h1>Devolver livro</h1>
+        </div>
+
+        <div class="datas-loan">
+            <div class="input-loan">
+                <h2>Id do livro que deseja devolver:</h2>
+                <input id="book" class="input" type="text">
+            </div>
+
+            <div class="btns">
+                <button v-on:click="returnedBook()">Devolver</button>
+                <p v-on:click="back()" id="back">&#10229;</p>
+            </div>
+        </div>
     </div>
 </template>
 <script>
-import axios from 'axios';
+import api from "../services/api.js";
 export default {
-    data()
-    {
-        return{
-            data:[]
-        }
-        
-    },
+
     methods:
     {
-        returnedBook: function()
-        {
-            
+        returnedBook: function () {
+
             let iDbook = document.getElementById("book").value;
-            alert(iDbook);
-            axios
-                .get(`http://localhost:3000/return/${iDbook}`)
-                .then((response) => 
-                {
-                        console.log(response);
-                        alert("Livro devolvido com sucesso");
+            console.log(iDbook);
+            api.post(`/return/${iDbook}`)
+                .then((response) => {
+                    console.log(response);
+                    alert("Livro devolvido com sucesso");
                 },
-                (error) =>
-                {
-                    console.log(error);
-                });
+                    (error) => {
+                        console.log(error);
+                        alert("erro");
+                    });
         },
-    
-        back:function()
-        {
-            window.location.href ="http://localhost:8080/";
-        }        
-    
+
+        back: function () {
+            this.$router.push("/");
+        }
+
     }
 }
 </script>
 <style scoped>
-button
-{
-    border-radius:20px;
-    width:200px;
-    height:50px;
-    cursor:pointer;
+.header-loan {
+    padding-top: 10px;
 }
-#cadastro
-{
-    background-color:burlywood;
-    width:50%;
-    margin-left:25%;
-    margin-right:25%;
-    height:500px;
+
+.datas-loan {
+    margin-top: 120px;
 }
-.input
-{
-    height:30px;
-    width:70%;
-    margin-left:15%;
-    margin-right:15%;
+
+#back {
+    font-size: 30px;
+    position: relative;
+    top: 5%;
+    left: -40%;
+    cursor: pointer;
+}
+
+.btns {
+    margin-top: 20px;
+}
+
+button {
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#loan {
+    background-color: burlywood;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 600px;
+}
+
+.input {
+    height: 30px;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 </style>

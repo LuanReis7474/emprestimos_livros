@@ -1,91 +1,78 @@
 <template>
     <div id="home">
-        
-        <h1>&#128218; Emprestimos de livros</h1>
-        <br>
-        <br>
-        <button v-on:click="register()">Cadastrar usuário</button>
-        <br>
-        <br>
-        <button v-on:click="registerBook()">Cadastrar Livro para usuário</button>
-        <br>
-        <br>
-        <button v-on:click="loanBook()">Emprestar livros para usuários</button>
-        <br>
-        <br>
-        <button v-on:click="returnedBook()">Devolver livro</button>
-        <br>
-        <br>
-        
-        <button v-on:click="showInfoUser()">Acessar informações de usuários cadastrados</button>
+        <div class="header-home">
+            <h1>&#128218; Emprestimos de livros</h1>
+        </div>
 
-        <br>
-        <br>
-        
-        <button v-on:click="showInfoBook()">Acessar livros cadastrados</button>
-        <br>
-        <br>
-        <button v-on:click="showInfoLoan()">Acessar informações de emprestimos</button>
+        <div class="list-btns">
+            <div class="btns-link">
+                <router-link to="/cadastro-usuario" class="list-nav">Cadastrar usuário</router-link>
+            </div>
 
+            <div class="btns-link">
+                <router-link to="/cadastro-livro" class="list-nav">Cadastrar Livro para usuário</router-link>
+            </div>
+
+            <div class="btns-link">
+                <router-link to="/emprestar-livro" class="list-nav">Emprestar livros para usuários</router-link>
+            </div>
+
+            <div class="btns-link">
+                <router-link to="/devolver" class="list-nav">Devolver Livro</router-link>
+            </div>
+
+            <div class="btns-link">
+                <router-link to="/usuarios-cadastrados" class="list-nav">Acessar informações de usuários cadastrados
+                </router-link>
+            </div>
+
+            <div class="btns-link">
+                <router-link to="/livro-cadastrados" class="list-nav">Acessar livros cadastrados</router-link>
+            </div>
+
+            <div class="btns-link">
+                <router-link to="/lista-emprestimos" class="list-nav">Acessar informações de emprestimos</router-link>
+            </div>
+        </div>
     </div>
 </template>
-<script>
-export default
-{
-    methods:
-    {
-        showInfoLoan: function()
-        {
-            window.location.href= "http://localhost:8080/lista-emprestimos"
-        },
-        showInfoBook: function()
-        {
-            window.location.href= "http://localhost:8080/livro-cadastrados";
-        },
-        returnedBook: function()
-        {
-            window.location.href= "http://localhost:8080/devolver";
-        },
-        loanBook: function()
-        {
-            window.location.href= "http://localhost:8080/emprestar-livro";
-        },
-        registerBook: function()
-        {
-            window.location.href= "http://localhost:8080/cadastro-livro"
-        },
-        register: function()
-        {
-            window.location.href= "http://localhost:8080/cadastro-usuario"
-        },
-        showInfoUser: function()
-        {
-            window.location.href= "http://localhost:8080/usuarios-cadastrados"
-        }
-        
-    }
-}
-</script>
+
 <style scoped>
-button
-{
-    border-radius:20px;
-    width:200px;
-    height:50px;
-    cursor:pointer;
+.header-home {
+    padding-top: 10px;
 }
-#home
-{
-    background-color:burlywood;
-    width:50%;
-    margin-left:25%;
-    margin-right:25%;
-    height:580px;
+
+.list-btns {
+    margin-top: 80px;
 }
-.input
-{
-    width:70%;
-    margin-left:15%;
-    margin-right:15%;
+
+.btns-link {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.list-nav {
+    border: 1px solid black;
+    border-radius: 20px;
+    height: 50px;
+    cursor: pointer;
+    background-color: antiquewhite;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+#home {
+    background-color: burlywood;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    height: 580px;
+}
+
+.input {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 </style>

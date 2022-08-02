@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    
-       <router-view :key="$route.path"></router-view>
-    
-   
-   
+
+    <router-view></router-view>
+
   </div>
 </template>
 
